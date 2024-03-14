@@ -24,13 +24,13 @@ pipeline {
                 success {
                     emailext  subject: 'Unit Test Status - Success', 
                               body: 'Unit Test has been completed successfully.', 
-                              to: "tinav1409@gmail.com",
+                              to: "tina4851.be22@chitkara.edu.in",
                               attachLog: true
                 }
                 failure {
                     emailext subject: 'Unit Test Status - Failure', 
                               body: 'Unit Test has failed.', 
-                              to: "tinav1409@gmail.com",
+                              to: "tina4851.be22@chitkara.edu.in",
                               attachLog: true
                 }
             }
@@ -53,13 +53,13 @@ pipeline {
                 success {
                     emailext  subject: 'Security Scan Status - Success', 
                               body: 'Security Scan has been completed successfully.', 
-                              to: "tinav1409@gmail.com",
+                              to: "tina4851.be22@chitkara.edu.in",
                               attachLog: true
                 }
                 failure {
                     emailext subject: 'Security Scan Status - Failure', 
                               body: 'Security Scan has failed.', 
-                              to: "tinav1409@gmail.com",
+                              to: "tina4851.be22@chitkara.edu.in",
                               attachLog: true
                 }
             }
