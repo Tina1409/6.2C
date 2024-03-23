@@ -4,7 +4,7 @@ pipeline {
     environment {
         DIRECTORY_PATH = "https://github.com/Tina1409/Deakin-Unit-Page"
         TESTING_ENVIRONMENT = "Tina's TestingEnv"
-        PRODUCTION_ENVIRONMENT = "Tina Verma"
+        PRODUCTION_ENVIRONMENT = "Tina Verma "
     }
 
     stages {
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "Running unit tests"
                 echo "Running integration tests"
-                echo "updated new commit"
+                echo "updated new commit 2"
             }
             post {
                 success {
