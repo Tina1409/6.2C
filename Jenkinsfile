@@ -21,19 +21,24 @@ pipeline {
                 echo "Running integration tests"
             }
             post {
-                success {
-                    emailext  subject: 'Unit Test Status - Success', 
-                              body: 'Unit Test has been completed successfully.', 
-                              to: "tinav1409@gmail.com",
-                              attachLog: true
-                }
-                failure {
-                    emailext subject: 'Unit Test Status - Failure', 
-                              body: 'Unit Test has failed.', 
-                              to: "tinav1409@gmail.com",
-                              attachLog: true
-                }
-            }
+    success {
+        emailext (
+            subject: 'Unit Test Status - Success', 
+            body: 'Unit Test has been completed successfully.', 
+            to: ["tina4851.be22@chitkara.edu.in", "tinav1409@gmail.com"],
+            attachLog: true
+        )
+    }
+    failure {
+        emailext (
+            subject: 'Unit Test Status - Failure', 
+            body: 'Unit Test has failed.', 
+            to: "tina4851.be22@chitkara.edu.in",
+            attachLog: true
+        )
+    }
+}
+
         }
         stage('Code Quality Check') {
             steps {
