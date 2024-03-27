@@ -4,7 +4,7 @@ pipeline {
     environment {
         DIRECTORY_PATH = "https://github.com/Tina1409/Deakin-Unit-Page"
         TESTING_ENVIRONMENT = "Tina's TestingEnv"
-        PRODUCTION_ENVIRONMENT = "Tina Verma "
+        PRODUCTION_ENVIRONMENT = "Tina Verma"
     }
 
     stages {
@@ -12,30 +12,28 @@ pipeline {
             steps {
                 echo "Fetching the source code from the directory path specified by the environment variable: ${env.DIRECTORY_PATH}"
                 echo "Compiling the code and generating any necessary artifacts, updated"
-                echo "updated new commit"
+              
             }
         }
         stage('Test') {
             steps {
                 echo "Running unit tests"
                 echo "Running integration tests"
-                echo "updated new commit 2"
             }
             post {
                 success {
                     emailext  subject: 'Unit Test Status - Success', 
                               body: 'Unit Test has been completed successfully.', 
-                              to: ["tina4851.be22@chitkara.edu.in", "tinav1409@gmail.com"],
+                              to: "tinav1409@gmail.com",
                               attachLog: true
                 }
                 failure {
                     emailext subject: 'Unit Test Status - Failure', 
                               body: 'Unit Test has failed.', 
-                              to: "tina4851.be22@chitkara.edu.in",
+                              to: "tinav1409@gmail.com",
                               attachLog: true
                 }
             }
-
         }
         stage('Code Quality Check') {
             steps {
@@ -55,13 +53,13 @@ pipeline {
                 success {
                     emailext  subject: 'Security Scan Status - Success', 
                               body: 'Security Scan has been completed successfully.', 
-                              to: "tina4851.be22@chitkara.edu.in",
+                              to: "tinav1409@gmail.com",
                               attachLog: true
                 }
                 failure {
                     emailext subject: 'Security Scan Status - Failure', 
                               body: 'Security Scan has failed.', 
-                              to: "tina4851.be22@chitkara.edu.in",
+                              to: "tinav1409@gmail.com",
                               attachLog: true
                 }
             }
