@@ -10,39 +10,38 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Fetching the source code from the directory path specified by the environment variable: ${env.DIRECTORY_PATH}"
-                echo "Compiling the code and generating any necessary artifacts, updated"
+                echo "Building the code using Maven"
+                echo "Compiling the code and generating necessary artifacts"
             }
         }
-        stage('Test') {
+        stage('Unit and Integration Tests') {
             steps {
-                echo "Running unit tests"
-                echo "Running integration tests"
+                echo "Running unit tests with JUnit"
+                echo "Running integration tests with Selenium"
             }
             post {
                 success {
-                    emailext subject: 'Unit Test Status - Success', 
-                              body: 'Unit Test has been completed successfully.', 
+                    emailext subject: 'Unit and Integration Test Status - Success', 
+                              body: 'Unit and Integration Tests have been completed successfully.', 
                               to: "tina4851.be22@chitkara.edu.in",
                               attachLog: true
-                    
                 }
                 failure {
-                    emailext subject: 'Unit Test Status - Failure', 
-                              body: 'Unit Test has failed.', 
+                    emailext subject: 'Unit and Integration Test Status - Failure', 
+                              body: 'Unit and Integration Tests have failed.', 
                               to: "tina4851.be22@chitkara.edu.in",
                               attachLog: true
                 }
             }
         }
-        stage('Code Quality Check') {
+        stage('Code Analysis') {
             steps {
-                echo "Checking the quality of the code"
+                echo "Analyzing the code with SonarQube"
             }
         }
         stage('Security Scan') {
             steps {
-                echo "Performing security scan on the code"
+                echo "Performing security scan on the code with OWASP ZAP"
             }
             post {
                 success {
@@ -59,23 +58,19 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Staging') {
+            steps {
+                echo "Deploying the application to AWS EC2 instance for staging"
+            }
+        }
         stage('Integration Tests on Staging') {
             steps {
                 echo "Running integration tests on the staging environment"
-                
-            }
-        }
-        stage('Approval') {
-            steps {
-                script {
-                    echo "Pausing for manual approval..."
-                }
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo "Deploying the code to the production environment "
-               
+                echo "Deploying the application to AWS EC2 instance for production"
             }
         }
     }
