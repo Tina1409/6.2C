@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Security Scan') {
             steps {
-                echo "Performing security scan on the code with OWASP ZAP"
+                echo "Performing security scan on the code with ZAP"
             }
             post {
                 success {
