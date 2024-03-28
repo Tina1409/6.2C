@@ -65,6 +65,7 @@ pipeline {
         stage('Integration Tests on Staging') {
             steps {
                 echo "Running integration tests on the staging environment"
+                
             }
         }
         stage('Approval') {
@@ -76,7 +77,8 @@ pipeline {
         }
         stage('Deploy to Production') {
             steps {
-                echo "Deploying the code to the production environment"
+                echo "Deploying the code to the production environment "
+               
             }
         }
     }
