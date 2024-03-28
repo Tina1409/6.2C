@@ -12,7 +12,6 @@ pipeline {
             steps {
                 echo "Fetching the source code from the directory path specified by the environment variable: ${env.DIRECTORY_PATH}"
                 echo "Compiling the code and generating any necessary artifacts, updated"
-              
             }
         }
         stage('Test') {
@@ -22,9 +21,9 @@ pipeline {
             }
             post {
                 success {
-                    emailext  subject: 'Unit Test Status - Success', 
+                    emailext subject: 'Unit Test Status - Success', 
                               body: 'Unit Test has been completed successfully.', 
-                              to: "tina4851.be22@chitkara.edu.in","tina4851.be22@chitkara.edu.in",
+                              to: "tina4851.be22@chitkara.edu.in",
                               attachLog: true
                 }
                 failure {
@@ -44,14 +43,9 @@ pipeline {
             steps {
                 echo "Performing security scan on the code"
             }
-        }
-        stage('Deploy to Staging') {
-            steps {
-                echo "Deploying the application to a testing environment specified by the environment variable: ${env.TESTING_ENVIRONMENT}"
-            }
             post {
                 success {
-                    emailext  subject: 'Security Scan Status - Success', 
+                    emailext subject: 'Security Scan Status - Success', 
                               body: 'Security Scan has been completed successfully.', 
                               to: "tina4851.be22@chitkara.edu.in",
                               attachLog: true
@@ -67,7 +61,6 @@ pipeline {
         stage('Integration Tests on Staging') {
             steps {
                 echo "Running integration tests on the staging environment"
-                
             }
         }
         stage('Approval') {
@@ -79,8 +72,7 @@ pipeline {
         }
         stage('Deploy to Production') {
             steps {
-                echo "Deploying the code to the production environment "
-               
+                echo "Deploying the code to the production environment"
             }
         }
     }
