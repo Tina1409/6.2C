@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building the code using Maven"
-                echo "Compiling the code and generating necessary artifacts"
+                echo "PDATED Compiling the code and generating necessary artifacts"
             }
         }
         stage('Unit and Integration Tests') {
